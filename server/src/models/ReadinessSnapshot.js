@@ -1,0 +1,5 @@
+const mongoose = require('mongoose');
+const scoreSchema = new mongoose.Schema({ profile: Number, resume: Number, dsa: Number, aptitude: Number, interview: Number }, { _id: false });
+const readinessSnapshotSchema = new mongoose.Schema({ user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, index: true }, overallReadiness: { type: Number, required: true }, evidenceConfidence: { type: String, required: true }, categoryScores: { type: scoreSchema, required: true }, roleReadiness: { role: String, score: Number, confidence: String }, companyReadiness: [{ company: String, score: Number }], preparationConsistency: { activePreparationDays: Number, plannerCompletionPercentage: Number, recentActivityCount: Number }, trigger: { type: String, required: true }, capturedAt: { type: Date, default: Date.now, index: true } }, { timestamps: false });
+readinessSnapshotSchema.index({ user: 1, capturedAt: -1 });
+module.exports = mongoose.model('ReadinessSnapshot', readinessSnapshotSchema);

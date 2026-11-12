@@ -1,0 +1,37 @@
+{
+  "name": "placementx-server",
+  "version": "1.0.0",
+  "description": "PlacementX REST API foundation",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon src/localServer.js",
+    "start": "node src/localServer.js",
+    "lint": "eslint src",
+    "test": "node --test",
+    "seed": "node src/seeds/seed.js",
+    "seed:aptitude": "node src/seeds/seedAptitudeBank.js",
+    "validate:aptitude": "node src/questionBank/validate.js",
+    "audit:aptitude": "node src/seeds/auditAptitudeBank.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1",
+    "multer": "^2.2.0",
+    "pdf-parse": "^2.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "nodemon": "^3.1.14"
+  }
+}

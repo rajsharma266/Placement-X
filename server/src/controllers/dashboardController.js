@@ -1,0 +1,1 @@
+const ApiResponse = require('../utils/ApiResponse'); const asyncHandler = require('../utils/asyncHandler'); const { getDashboard } = require('../services/dashboardService'); module.exports = { get: asyncHandler(async (req, res) => res.json(new ApiResponse({ message: 'Dashboard data retrieved', data: await getDashboard(req.user) }))) };

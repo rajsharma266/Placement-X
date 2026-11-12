@@ -1,0 +1,1 @@
+const router = require('express').Router(); const c = require('../controllers/intelligenceController'); const { protect, authorize } = require('../middleware/authMiddleware'); router.get('/', protect, authorize('student'), c.get); router.get('/trends', protect, authorize('student'), c.trends); module.exports = router;

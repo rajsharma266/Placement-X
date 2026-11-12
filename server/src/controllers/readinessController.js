@@ -1,0 +1,1 @@
+const ApiResponse = require('../utils/ApiResponse'); const asyncHandler = require('../utils/asyncHandler'); const { getReadiness } = require('../services/readinessService'); module.exports = { get: asyncHandler(async (req, res) => res.json(new ApiResponse({ message: 'Placement readiness retrieved', data: await getReadiness(req.user) }))) };

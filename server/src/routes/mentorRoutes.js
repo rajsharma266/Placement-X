@@ -1,0 +1,2 @@
+const router = require('express').Router(); const rateLimit = require('express-rate-limit'); const controller = require('../controllers/mentorController'); const { protect, authorize } = require('../middleware/authMiddleware');
+router.use(protect, authorize('student')); router.post('/chat', rateLimit({ windowMs: 15 * 60 * 1000, max: Number(process.env.MENTOR_RATE_LIMIT_MAX) || 20, standardHeaders: 'draft-8', legacyHeaders: false }), controller.chat); router.get('/starter-prompts', controller.prompts); module.exports = router;

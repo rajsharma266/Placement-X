@@ -1,0 +1,56 @@
+const group = require('./build');
+
+module.exports = [
+  ...group('logical-reasoning', 'Number Series', 'SER', [
+    ['easy', 'Find the next term: 2, 5, 10, 17, 26, ?', '35|36|37|38', 2, 'Successive differences are 3, 5, 7 and 9, consecutive odd numbers. Add the next difference, 11, to 26 to get 37.'],
+    ['easy', 'Find the next term: 81, 27, 9, 3, ?', '0|1|2|3', 1, 'Each term is divided by 3 to obtain the next one. Dividing 3 by 3 gives 1.'],
+    ['medium', 'Find the next term: 4, 7, 13, 22, 34, ?', '46|48|49|52', 2, 'The increases are 3, 6, 9 and 12, rising by 3 each time. The next increase is 15, so 34 + 15 = 49.'],
+    ['easy', 'Find the next term: 1, 1, 2, 3, 5, 8, ?', '11|12|13|14', 2, 'Each term from the third onward is the sum of its two predecessors. The next value is 5 + 8 = 13.'],
+    ['easy', 'Find the next term: 3, 6, 12, 24, 48, ?', '72|84|96|108', 2, 'Every term doubles the preceding term. Doubling 48 gives 96.'],
+    ['hard', 'Find the next term: 100, 96, 88, 76, 60, ?', '36|40|44|48', 1, 'The amounts subtracted are 4, 8, 12 and 16. Subtract the next multiple of four, 20, from 60 to obtain 40.'],
+    ['medium', 'Find the next term: 5, 11, 23, 47, ?', '93|94|95|96', 2, 'Each term is twice its predecessor plus 1: 5→11→23→47. Therefore 2 × 47 + 1 = 95.'],
+  ]),
+  ...group('logical-reasoning', 'Coding-Decoding', 'COD', [
+    ['easy', 'If CAT is coded as DBU by moving each letter one place forward, how is DOG coded?', 'EPH|EOG|FPI|CNE', 0, 'Move D to E, O to P and G to H. Preserving letter order gives EPH.'],
+    ['easy', 'A code reverses the letters of each word. If NORTH becomes HTRON, what does EAST become?', 'TASE|TSAE|ETSA|SAET', 1, 'Read EAST from its final letter to its first: T, S, A, E. The resulting code is TSAE.'],
+    ['medium', 'Using A=1, B=2, …, Z=26, which code represents PEAR?', '16-5-1-18|15-5-1-18|16-4-1-18|16-5-2-17', 0, 'P is the 16th letter, E the 5th, A the 1st and R the 18th. Keep that order to obtain 16-5-1-18.'],
+    ['easy', 'If BLUE is written as EULB, which code represents GREEN under the same rule?', 'NEERG|NEREG|GRENE|EERGN', 0, 'The rule reverses the entire word without changing letters. Reading GREEN backward yields N-E-E-R-G.'],
+    ['medium', 'Each letter shifts forward by two places in a code. If CODE becomes EQFG, what does DATA become?', 'FCVC|FCUC|ECVC|FCTC', 0, 'Shift D→F, A→C, T→V and A→C. Combining them in order gives FCVC.'],
+    ['medium', 'A word is coded as the sum of its letters’ alphabet positions (A=1). What is the code for CODE?', '25|26|27|28', 2, 'Assign each letter its alphabet position: C=3, O=15, D=4 and E=5. Add those four values, 3 + 15 + 4 + 5, to obtain the code 27.'],
+    ['hard', 'Replace each vowel with the next vowel in the cycle A→E→I→O→U→A. What does AUDIO become?', 'EADOU|EADOA|EUDAU|EADOO', 0, 'A→E, U→A, I→O and O→U; the consonant D stays D. The transformed letters in order are E-A-D-O-U.'],
+  ]),
+  ...group('logical-reasoning', 'Blood Relations', 'REL', [
+    ['easy', 'Maya is Ravi’s mother. Ravi and Neha share both parents. How is Maya related to Neha?', 'Aunt|Mother|Sister|Grandmother', 1, 'Ravi and Neha share both parents, so Ravi’s mother is also Neha’s mother. Maya is Neha’s mother.'],
+    ['medium', 'Anita is Bala’s sister. Bala is Chitra’s father. How is Anita related to Chitra?', 'Mother|Cousin|Aunt|Grandmother', 2, 'Anita is the sister of Chitra’s father, Bala. A father’s sister is an aunt.'],
+    ['medium', 'Pranav is Qamar’s father. Qamar is Ria’s mother. How is Pranav related to Ria?', 'Paternal grandfather|Maternal grandfather|Uncle|Father', 1, 'Qamar is Ria’s mother, and Pranav is Qamar’s father. Thus Pranav is Ria’s maternal grandfather.'],
+    ['medium', 'Sara is married to Tarun. Tarun is Uday’s brother. How is Sara related to Uday?', 'Sister|Sister-in-law|Aunt|Mother-in-law', 1, 'Sara is the spouse of Uday’s brother Tarun. The spouse of one’s sibling is a sibling-in-law.'],
+    ['easy', 'Nikhil is Mira’s father. Mira and Leena share both parents. How is Nikhil related to Leena?', 'Uncle|Father|Grandfather|Brother', 1, 'Mira and Leena share both parents. Nikhil, identified as Mira’s father, is therefore also Leena’s father.'],
+    ['medium', 'Isha is Vikram’s daughter. Vikram is Lata’s son. How is Lata related to Isha?', 'Aunt|Mother|Grandmother|Sister', 2, 'Lata is Vikram’s mother, and Vikram is Isha’s father. Lata is Isha’s grandmother.'],
+    ['easy', 'Dev is the only brother of Arun’s mother. How is Dev related to Arun?', 'Paternal uncle|Maternal uncle|Cousin|Grandfather', 1, 'Dev is the brother of Arun’s mother. A mother’s brother is a maternal uncle; “only” does not change the relation.'],
+  ]),
+  ...group('logical-reasoning', 'Directions', 'DIR', [
+    ['easy', 'A student walks 4 km north, then 3 km east. How far is the student from the starting point?', '5 km|6 km|7 km|12 km', 0, 'The north and east legs form a right triangle. The direct distance is √(4² + 3²) = 5 km.'],
+    ['easy', 'A courier moves 6 km east and 8 km south. What is the straight-line distance back to the start?', '8 km|10 km|12 km|14 km', 1, 'The perpendicular legs are 6 km and 8 km. By Pythagoras the distance is √(36 + 64) = 10 km.'],
+    ['medium', 'A walker goes 5 m north, turns right for 2 m, then turns right for 5 m. Where is the walker relative to the start?', '2 m west|2 m east|5 m north|7 m east', 1, 'The northward and southward 5 m movements cancel. The right turn from north adds 2 m east, leaving the walker 2 m east of the start.'],
+    ['easy', 'You face west and turn left once. Which direction do you face?', 'North|South|East|West', 1, 'A left turn from west points toward south on a compass. Visualize rotating counterclockwise from west.'],
+    ['medium', 'A runner goes 7 m south, 4 m west, then 7 m north. Where is the runner relative to the start?', '4 m east|4 m west|7 m north|11 m west', 1, 'The 7 m south and 7 m north legs cancel. Only the 4 m west movement remains.'],
+    ['medium', 'A drone moves 5 km east and 12 km north. What is its direct distance from launch?', '12 km|13 km|15 km|17 km', 1, 'The two movements are perpendicular. Compute √(5² + 12²) = √169 = 13 km.'],
+    ['easy', 'You face north and make two successive right-angle turns to the right. Which direction do you face?', 'North|East|South|West', 2, 'The first right turn changes north to east. The second changes east to south.'],
+  ]),
+  ...group('logical-reasoning', 'Syllogisms', 'SYL', [
+    ['medium', 'All engineers are graduates. All graduates are readers. Which conclusion must follow?', 'All readers are engineers|All engineers are readers|Some readers are not graduates|No engineer is a reader', 1, 'Every engineer belongs to the graduate set, which is wholly inside the reader set. Therefore every engineer is a reader; reversing an “all” statement is invalid.'],
+    ['medium', 'Some testers are coders. All coders are learners. Which conclusion must follow?', 'All testers are learners|Some testers are learners|No tester is a learner|All learners are coders', 1, 'The testers who are coders exist by the first statement. Because every coder is a learner, those testers are learners.'],
+    ['medium', 'No routers are printers. All switches are routers. Which conclusion must follow?', 'Some printers are switches|All printers are routers|No switches are printers|All routers are switches', 2, 'Every switch is within the router set. Since routers and printers do not overlap, switches cannot be printers.'],
+    ['hard', 'All tablets are devices. Some devices are portable. What follows about tablets and portable devices?', 'All tablets are portable|Some tablets are portable|No tablets are portable|No definite overlap follows', 3, 'The portable devices may or may not include tablets. The statements give no overlap or exclusion between those subsets, so no definite overlap follows.'],
+    ['hard', 'Some logs are alerts. No alerts are drafts. Which conclusion must follow?', 'Some logs are not drafts|All logs are alerts|Some drafts are alerts|No logs are drafts', 0, 'The logs that are alerts exist. Because no alert can be a draft, those particular logs are not drafts.'],
+    ['medium', 'All scripts are files. No files are folders. Which conclusion must follow?', 'Some folders are scripts|No scripts are folders|All files are scripts|Some scripts are folders', 1, 'Scripts are a subset of files. Since files and folders do not overlap, scripts and folders cannot overlap either.'],
+  ]),
+  ...group('logical-reasoning', 'Arrangements', 'ARR', [
+    ['medium', 'Four people face north in one row. D is at the left end; B is immediately right of A; C is immediately right of B. Who is second from the left?', 'A|B|C|D', 0, 'The adjacent chain is A-B-C. With D fixed at the left end, the row is D-A-B-C, placing A second.'],
+    ['hard', 'Five people stand in a line. P is first, T is last, Q is immediately left of R, and S is between P and Q. Who is in the middle?', 'P|Q|R|S', 1, 'The fixed ends are P and T. The remaining constraints make P-S-Q-R-T, so Q occupies the third, middle position.'],
+    ['medium', 'Four tasks occur Monday through Thursday. Design is Monday, testing follows design immediately, deployment is Thursday, and review follows testing. What happens Wednesday?', 'Design|Testing|Review|Deployment', 2, 'Design occupies Monday and testing Tuesday. Deployment is Thursday; the review that follows testing must therefore be Wednesday.'],
+    ['easy', 'Three books sit left to right. Red is left of blue, and green is right of blue. Which book is in the center?', 'Red|Blue|Green|Cannot determine', 1, 'Blue must be to the right of red and to the left of green. The only order is red-blue-green, making blue central.'],
+    ['hard', 'Six students line up. A is leftmost, B rightmost, C immediately right of A, D immediately left of B, and E is left of F. Who is fourth?', 'C|D|E|F', 3, 'The fixed places give A-C-_-_-D-B. E must precede F in the two open middle places, so the row is A-C-E-F-D-B.'],
+    ['easy', 'Five runners finish in this order: A ahead of B, B ahead of C, C ahead of D, and D ahead of E. Who is third?', 'B|C|D|E', 1, 'The comparisons form the complete order A-B-C-D-E. Counting from the front, C is third.'],
+  ]),
+];

@@ -1,0 +1,2 @@
+const Input = ({ label, error, className = '', ...props }) => <label className={`block text-sm font-medium text-slate-200 ${className}`}>{label}<input className={`mt-2 h-11 w-full rounded-xl border bg-slate-950/50 px-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 disabled:cursor-not-allowed disabled:opacity-60 ${error ? 'border-rose-400' : 'border-slate-700'}`} {...props} />{error && <span className="mt-1.5 block text-xs text-rose-300">{error}</span>}</label>;
+export default Input;

@@ -1,0 +1,5 @@
+import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
+
+const PasswordInput = ({ label = 'Password', error, ...props }) => { const [visible, setVisible] = useState(false); return <label className="block text-sm font-medium text-slate-200">{label}<span className="relative mt-2 block"><input className={`h-11 w-full rounded-xl border bg-slate-950/50 px-3 pr-11 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 ${error ? 'border-rose-400' : 'border-slate-700'}`} type={visible ? 'text' : 'password'} {...props} /><button className="absolute inset-y-0 right-0 grid w-11 place-items-center text-slate-400 hover:text-white" type="button" aria-label={visible ? 'Hide password' : 'Show password'} onClick={() => setVisible(!visible)}>{visible ? <EyeOff size={17} /> : <Eye size={17} />}</button></span>{error && <span className="mt-1.5 block text-xs text-rose-300">{error}</span>}</label>; };
+export default PasswordInput;

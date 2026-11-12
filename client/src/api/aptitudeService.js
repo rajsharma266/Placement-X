@@ -1,0 +1,12 @@
+import apiClient from './client';
+const data = async (request) => (await request).data.data;
+export const getAptitudeQuestions = (params) => data(apiClient.get('/aptitude/questions', { params }));
+export const getAptitudeCatalog = (params) => data(apiClient.get('/aptitude/catalog', { params }));
+export const submitAptitudeAttempt = (payload) => data(apiClient.post('/aptitude/attempt', payload));
+export const markAptitudeRevision = (id, revisionRequired) => data(apiClient.patch(`/aptitude/attempt/${id}/revision`, { revisionRequired }));
+export const getAptitudeProgress = () => data(apiClient.get('/aptitude/progress'));
+export const startAptitudeAssessment = (payload) => data(apiClient.post('/aptitude/assessments', payload));
+export const getActiveAptitudeAssessment = () => data(apiClient.get('/aptitude/assessments/active'));
+export const getAptitudeAssessment = (id) => data(apiClient.get(`/aptitude/assessments/${id}`));
+export const saveAptitudeAssessment = (id, payload) => data(apiClient.patch(`/aptitude/assessments/${id}`, payload));
+export const submitAptitudeAssessment = (id) => data(apiClient.post(`/aptitude/assessments/${id}/submit`));

@@ -1,0 +1,6 @@
+import { AlertCircle, Inbox } from 'lucide-react';
+import Button from './Button';
+
+export const EmptyState = ({ icon: Icon = Inbox, title, description, action }) => <div className="flex min-h-52 flex-col items-center justify-center rounded-2xl border border-dashed border-slate-700 bg-slate-900/40 p-8 text-center"><span className="grid size-11 place-items-center rounded-xl bg-slate-800 text-indigo-300"><Icon size={21} /></span><h2 className="mt-4 font-semibold text-white">{title}</h2><p className="mt-2 max-w-sm text-sm leading-6 text-slate-400">{description}</p>{action && <div className="mt-5">{action}</div>}</div>;
+export const ErrorState = ({ title = 'Unable to load this section', description = 'Please check your connection and try again.', onRetry }) => <div className="flex min-h-52 flex-col items-center justify-center rounded-2xl border border-rose-500/20 bg-rose-500/5 p-8 text-center"><AlertCircle className="text-rose-300" /><h2 className="mt-3 font-semibold text-white">{title}</h2><p className="mt-2 text-sm text-slate-400">{description}</p>{onRetry && <Button variant="secondary" className="mt-5" onClick={onRetry}>Try again</Button>}</div>;
+export const Skeleton = ({ className = '' }) => <div className={`animate-pulse rounded-xl bg-slate-800/80 ${className}`} />;

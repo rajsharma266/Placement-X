@@ -1,0 +1,3 @@
+const ApiResponse = require('../utils/ApiResponse'); const asyncHandler = require('../utils/asyncHandler'); const { chat, starterPrompts } = require('../services/mentorService');
+const chatMentor = asyncHandler(async (req, res) => { try { res.json(new ApiResponse({ message: 'Mentor guidance retrieved', data: await chat(req.user, req.body?.message) })); } catch (error) { error.statusCode = error.statusCode || 400; throw error; } });
+module.exports = { chat: chatMentor, prompts: asyncHandler(async (_req, res) => res.json(new ApiResponse({ message: 'Mentor starter prompts retrieved', data: { prompts: starterPrompts() } }))) };

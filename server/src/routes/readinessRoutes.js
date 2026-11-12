@@ -1,0 +1,1 @@
+const router = require('express').Router(); const c = require('../controllers/readinessController'); const { protect, authorize } = require('../middleware/authMiddleware'); router.get('/', protect, authorize('student'), c.get); module.exports = router;

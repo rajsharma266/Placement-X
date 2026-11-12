@@ -1,0 +1,2 @@
+const Progress = ({ value = 0, label, showValue = true, className = '' }) => <div className={className}>{label && <div className="mb-2 flex justify-between gap-3 text-sm"><span className="text-slate-300">{label}</span>{showValue && <span className="font-medium text-slate-100">{value}%</span>}</div>}<div className="h-2 overflow-hidden rounded-full bg-slate-800"><div className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-400 transition-all" style={{ width: `${Math.max(0, Math.min(100, value))}%` }} /></div></div>;
+export default Progress;

@@ -1,0 +1,1 @@
+const router = require('express').Router(); const c = require('../controllers/profileController'); const { protect, authorize } = require('../middleware/authMiddleware'); router.use(protect, authorize('student')); router.get('/', c.getProfile); router.put('/', c.putProfile); router.get('/completion', c.completion); module.exports = router;
