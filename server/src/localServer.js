@@ -42,8 +42,14 @@ const startServer = async () => {
   try {
     await connectDatabase();
   } catch (error) {
-    console.error('Database connection failed. Database-dependent endpoints are unavailable.', error.message);
-  }
+  console.error('MongoDB Connection Error:', {
+    name: error.name,
+    message: error.message,
+    code: error.code,
+    cause: error.cause?.message,
+    reason: error.reason?.type
+  });
+
 };
 
 const handleShutdownError = (error) => {
