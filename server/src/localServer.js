@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 
 const app = require('./app');
@@ -8,8 +9,19 @@ let httpServer;
 
 const validateProductionEnvironment = () => {
   if (process.env.NODE_ENV !== 'production') return;
-  const missing = ['MONGODB_URI', 'CLIENT_URL', 'JWT_SECRET', 'JWT_EXPIRES_IN'].filter((name) => !process.env[name]);
-  if (missing.length) throw new Error(`Missing required production environment variables: ${missing.join(', ')}`);
+
+  const missing = [
+    'MONGODB_URI',
+    'CLIENT_URL',
+    'JWT_SECRET',
+    'JWT_EXPIRES_IN'
+  ].filter((name) => !process.env[name]);
+
+  if (missing.length) {
+    throw new Error(
+      `Missing required production environment variables: ${missing.join(', ')}`
+    );
+  }
 };
 
 const shutdown = async (signal) => {
@@ -17,7 +29,9 @@ const shutdown = async (signal) => {
 
   if (httpServer) {
     await new Promise((resolve, reject) => {
-      httpServer.close((error) => (error ? reject(error) : resolve()));
+      httpServer.close((error) =>
+        error ? reject(error) : resolve()
+      );
     });
   }
 
@@ -27,6 +41,7 @@ const shutdown = async (signal) => {
 
 const startServer = async () => {
   validateProductionEnvironment();
+
   httpServer = app.listen(port, () => {
     console.info(`PlacementX API listening on port ${port}.`);
   });
@@ -36,20 +51,25 @@ const startServer = async () => {
     process.exit(1);
   });
 
-  process.once('SIGINT', () => shutdown('SIGINT').catch(handleShutdownError));
-  process.once('SIGTERM', () => shutdown('SIGTERM').catch(handleShutdownError));
+  process.once('SIGINT', () =>
+    shutdown('SIGINT').catch(handleShutdownError)
+  );
+
+  process.once('SIGTERM', () =>
+    shutdown('SIGTERM').catch(handleShutdownError)
+  );
 
   try {
     await connectDatabase();
   } catch (error) {
-  console.error('MongoDB Connection Error:', {
-    name: error.name,
-    message: error.message,
-    code: error.code,
-    cause: error.cause?.message,
-    reason: error.reason?.type
-  });
-
+    console.error('MongoDB Connection Error:', {
+      name: error.name,
+      message: error.message,
+      code: error.code,
+      cause: error.cause?.message,
+      reason: error.reason?.type
+    });
+  }
 };
 
 const handleShutdownError = (error) => {
